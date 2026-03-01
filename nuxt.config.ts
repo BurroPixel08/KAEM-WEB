@@ -1,5 +1,11 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+// nuxt.config.ts
 export default defineNuxtConfig({
-  compatibilityDate: '2025-07-15',
-  devtools: { enabled: true }
+  // Enlace del CSS global
+  css: ['~/assets/css/main.css'],
+
+  build: {
+    transpile: ['gsap']
+  },
+
+  modules: ['@nuxt/icon']
 })

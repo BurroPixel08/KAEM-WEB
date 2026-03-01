@@ -1,0 +1,35 @@
+:root {
+  /* Nombre descriptivo para el color #5416cf (un tono púrpura/azul intenso) */
+  --enfasis-color: #5416cf;
+  --morado-color: rgba(84, 22, 207, 0.4);
+}
+
+@font-face {
+  font-family: 'Cubao';
+  src: url('/fonts/Cubao.otf') format('opentype'); /* Ajusta la ruta a tu archivo */
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  /* No fijes la altura aquí, deja que el contenido la dicte */
+  min-height: 100vh; 
+  background-color: #0e0e0e; /* Fondo oscuro tipo lujo */
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Evita que las imágenes tengan espacios extraños debajo */
+img {
+  display: block;
+  max-width: 100%;
+}
