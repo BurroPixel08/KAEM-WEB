@@ -21,7 +21,7 @@
             </p>
             <div class="price-row">
               <span class="price">30.00$</span>
-              <button class="buy-now">¡PIDELA YA!</button>
+              <button class="buy-now" @click="buyProduct('Franela Anime 01')">¡PIDELA YA!</button>
             </div>
           </div>
         </div>
@@ -39,6 +39,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 onMounted(() => {
   if (process.client) {
     gsap.registerPlugin(ScrollTrigger);
+    const { buyProduct } = useCart();
 
     const ctx = gsap.context(() => {
       
@@ -109,7 +110,7 @@ onMounted(() => {
 
 /* --- CAPA PARALLAX --- */
 .parallax-bg {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -359,5 +360,38 @@ onMounted(() => {
   .badge {
     z-index: 5; /* Que quede por debajo del cristal al hacer hover */
   }
+}
+
+@media (max-width: 410px){
+  .favorite-section {
+    padding: 120px 10px;
+  }
+
+  .favorite-card {
+    flex-direction: column;
+    height: 550px; /* Altura fija para que la imagen tenga espacio */
+    position: relative;
+  }
+    .image-area{
+      width: 100%;
+      height: 100%;
+      padding: 0px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+  }
+    .description{
+      margin-bottom: 10px;
+  }
+
+  .price-row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-direction: column;
+  }
+
 }
 </style>

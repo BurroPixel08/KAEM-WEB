@@ -120,7 +120,7 @@
 
 /* Contenedor de Ropa */
 .clothing-container {
-  width: 100%;
+  width: 100vw;
   height: 50%;
   display: flex;
   justify-content: center;
@@ -130,9 +130,10 @@
 .clothings {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  width: 100%;
+  width: 100vw;
   height: 100%;
   padding: 0 20px;
+  box-sizing: border-box;
   /* Alinea los items del grid al inicio (top) */
   align-items: start; 
 }
@@ -162,10 +163,12 @@
   
   .clothings {
     flex-wrap: wrap; /* En móvil se pueden acomodar en 2x2 o scroll */
+    width: 100vw;
+    padding: 0;
   }
   
   .clothings picture {
-    width: 100%;
+    width: 100vw;
   }
 }
 </style>

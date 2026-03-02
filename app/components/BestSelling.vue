@@ -101,6 +101,7 @@ onMounted(() => {
   font-weight: lighter;
   margin-bottom: 35px;
   color: #222222;
+  text-align: center;
 }
 
 .cards-container {
