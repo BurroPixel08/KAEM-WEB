@@ -40,8 +40,28 @@
 </template>
 
 <script setup>
-// Aquí no necesitamos lógica compleja, ya que la redirección 
-// la manejan los botones de compra en los otros componentes.
+import { onMounted } from 'vue'
+  import { gsap } from 'gsap'
+  import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+  // Registramos el plugin (importante hacerlo fuera o dentro del onMounted)
+  gsap.registerPlugin(ScrollTrigger);
+
+  onMounted(() => {
+  // 1. Animaciones de entrada (mantén las que ya tienes)
+
+  gsap.from(".step-card", {
+      y: 60,
+      opacity: 0,
+      duration: 1,
+      ease: "back.out(1.7)",
+      scrollTrigger: {
+      trigger: ".step-card",
+      start: "center bottom",
+      toggleActions: "play reverse play reverse",
+    }
+  });
+})
 </script>
 
 <style scoped>

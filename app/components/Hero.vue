@@ -26,6 +26,37 @@
 </template>
 
 <script setup>
+  import { onMounted } from 'vue'
+  import { gsap } from 'gsap'
+  import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+  // Registramos el plugin (importante hacerlo fuera o dentro del onMounted)
+  gsap.registerPlugin(ScrollTrigger);
+
+  onMounted(() => {
+  // 1. Animaciones de entrada (mantén las que ya tienes)
+  gsap.from(".logo", { duration: 1, y: -50, opacity: 0, ease: "power4.out" })
+  gsap.from(".clothings picture", {
+    duration: 1.2,
+    y: 100,
+    opacity: 0,
+    stagger: 0.2,
+    ease: "back.out(1.7)",
+    delay: 0.3
+  })
+
+  gsap.to(".clothings", {
+    y:("+=60%"),
+    scrollTrigger:{
+      trigger: ".hero-container",
+      start: "top top",
+      end: "bottom top",
+      ease: "back.out(1.7)",
+      stagger: 0.2,
+      scrub: 2
+    }
+  })
+})
 </script>
 
 <style scoped>

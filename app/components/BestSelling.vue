@@ -38,6 +38,51 @@
   </section>
 </template>
 
+<script setup>
+import { onMounted } from 'vue'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+onMounted(() => {
+  // 1. Nos aseguramos de que esto SOLO corra en el navegador
+  if (process.client) {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Creamos el contexto aquí adentro para evitar el error de "not defined"
+    const ctx = gsap.context(() => {
+      
+      // Animación de entrada de las tarjetas (PC y Móvil)
+      gsap.from(".card", {
+        y: 120,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".cards-container",
+          start: "top 85%",
+          toggleActions: "play reverse play reverse",
+        }
+      });
+
+      // Solo para MÓVILES: Activa el hover automático al scrollear
+      ScrollTrigger.matchMedia({
+        "(max-width: 768px)": function() {
+          const cards = gsap.utils.toArray(".card");
+          cards.forEach((card) => {
+            ScrollTrigger.create({
+              trigger: card,
+              start: "top center",
+              end: "bottom center",
+              toggleClass: "is-active",
+            });
+          });
+        }
+      });
+
+    });
+  }
+})
+</script>
 <style scoped>
 .best-selling {
   width: 100%;
@@ -174,19 +219,22 @@
 /* HOVER EFFECTS */
 
 /* La tarjeta se presiona ligeramente */
-.card:hover {
+.card:hover,
+.card.is-active {
   transform: scale(0.98);
   box-shadow: inset 4px 4px 8px rgba(163, 177, 198, 0.5), 
               inset -4px -4px 8px rgba(255, 255, 255, 0.7);
 }
 
 /* La imagen hace un pequeño zoom */
-.card:hover .img-container {
+.card:hover .img-container,
+.card.is-active .img-container{
   transform: scale(1.1);
 }
 
 /* El cristal se expande, se teñe de morado y se empaña, y el texto aparece */
-.card:hover .glass-textBox {
+.card:hover .glass-textBox,
+.card.is-active .glass-textBox{
   opacity: 1;
   width: 100%;
   height: 100%;
@@ -198,7 +246,8 @@
 }
 
 /* Mostrar el texto al hacer hover */
-.card:hover .glass-textBox * {
+.card:hover .glass-textBox *,
+.card.is-active .glass-textBox *{
   opacity: 1;
 }
 

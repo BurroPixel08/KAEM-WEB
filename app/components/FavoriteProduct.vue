@@ -31,6 +31,53 @@
   </section>
 </template>
 
+<script setup>
+import { onMounted } from 'vue'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+onMounted(() => {
+  if (process.client) {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      
+      // 1. Animación de entrada (Aparece al bajar)
+      gsap.from(".favorite-card", {
+        y: 100,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".favorite-section",
+          start: "top 50%", // Se activa un poco antes
+          toggleActions: "play reverse play reverse",
+        }
+      });
+
+      // 2. Solo para MÓVILES: Auto-activación del "Hover"
+      ScrollTrigger.matchMedia({
+        "(max-width: 850px)": function() {
+          // CORREGIDO: ".favorite-card" (estaba mal escrito como favotite)
+          const favCard = document.querySelector(".favorite-card");
+          
+          if (favCard) {
+            ScrollTrigger.create({
+              trigger: favCard,
+              // Se activa cuando el centro de la tarjeta toca el centro de la pantalla
+              start: "bottom bottom",
+              toggleClass: "is-active",
+              // markers: true, // Descomenta esta línea para ver las guías y ajustar
+            });
+          }
+        }
+      });
+
+    });
+  }
+})
+</script>
+
 <style scoped>
 .favorite-section {
   width: 100%;
@@ -116,7 +163,8 @@
   transition: transform 0.6s ease;
 }
 
-.favorite-card:hover .product-img img {
+.favorite-card:hover .product-img img,
+.favorite-card.is-active .product-img img{
   transform: scale(1.05) rotate(-2deg);
 }
 
@@ -265,16 +313,19 @@
   }
 
   /* EFECTO HOVER / TAP (En móvil se activa al tocar) */
-  .favorite-card:hover .info-area {
+  .favorite-card:hover .info-area,
+  .favorite-card.is-active .info-area{
     opacity: 1;
     visibility: visible;
   }
 
-  .favorite-card:hover .glass-content {
+  .favorite-card:hover .glass-content,
+  .favorite-card.is-active .glass-content{
     transform: translateY(0);
   }
 
-  .favorite-card:hover .product-img img {
+  .favorite-card:hover .product-img img,
+  .glass-content.is-active .product-img img{
     transform: scale(0.9) rotate(-2deg);
     filter: blur(4px);
   }
