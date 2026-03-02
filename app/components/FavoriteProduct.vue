@@ -21,7 +21,7 @@
             </p>
             <div class="price-row">
               <span class="price">30.00$</span>
-              <button class="buy-now" @click="buyProduct('Franela Anime 01')">¡PIDELA YA!</button>
+              <button class="buy-now" @click="buyProduct('Yuta Change')">¡PIDELA YA!</button>
             </div>
           </div>
         </div>
@@ -35,11 +35,11 @@
 import { onMounted } from 'vue'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+const { buyProduct } = useCart();
 
 onMounted(() => {
   if (process.client) {
     gsap.registerPlugin(ScrollTrigger);
-    const { buyProduct } = useCart();
 
     const ctx = gsap.context(() => {
       

@@ -5,7 +5,7 @@ export const useCart = () => {
     const message = encodeURIComponent(
       `¡Hola KAEM! Me interesa comprar: ${productName}. ¿Está disponible?`
     );
-    window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+    window.open(`https://wa.me/+${phone}?text=${message}`, '_blank');
   };
 
   return {
