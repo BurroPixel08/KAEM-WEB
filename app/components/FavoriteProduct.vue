@@ -8,7 +8,13 @@
         <div class="image-area">
           <div class="badge">FAVORITO DE LA SEMANA</div>
           <picture class="product-img">
-            <img src="/favorite.png" alt="Sudadera Destacada">
+            <NuxtImg 
+              src="/favorite.webp" 
+              alt="Sudadera Destacada"
+              quality="80"
+              format="webp"
+              loading="lazy"
+            />
           </picture>
         </div>
 
@@ -110,11 +116,11 @@ onMounted(() => {
 
 /* --- CAPA PARALLAX --- */
 .parallax-bg {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 120%; /* Más alta para tener margen de movimiento */
+  height: 100%; /* Más alta para tener margen de movimiento */
   /* Imagen abstracta de Unsplash */
   background-image: linear-gradient(rgba(84, 22, 207, 0.4), rgba(84, 22, 207, 0.4)), /* Capa morada */
     url("/bg1.jpg"); /* Tu imagen de fondo */;

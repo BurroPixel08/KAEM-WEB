@@ -4,7 +4,15 @@
     <div class="cards-container">
       <div class="card">
         <picture class="img-container">
-          <img src="/oversize.png" alt="Oversize Tee">
+          <NuxtImg 
+            src="/oversize.webp" 
+            alt="Oversize Tee" 
+            quality="80"
+            width="400" 
+            height="500" 
+            format="webp" 
+            loading="lazy" 
+          />
         </picture>
         <div class="glass-textBox">
           <p class="text head">Oversize Tee</p>
@@ -15,7 +23,15 @@
 
       <div class="card">
         <picture class="img-container">
-          <img src="/pullover.png" alt="Premium Pullover">
+          <NuxtImg 
+            src="/pullover.webp" 
+            alt="Premium Pullover"
+            quality="80" 
+            width="400" 
+            height="500" 
+            format="webp" 
+            loading="lazy" 
+          />
         </picture>
         <div class="glass-textBox">
           <p class="text head">Premium Pullover</p>
@@ -26,7 +42,15 @@
 
       <div class="card">
         <picture class="img-container">
-          <img src="/hoodie.png" alt="Classic Hoodie">
+          <NuxtImg 
+            src="/hoodie.webp" 
+            alt="Classic Hoodie" 
+            quality="80"
+            width="400" 
+            height="500" 
+            format="webp" 
+            loading="lazy" 
+          />
         </picture>
         <div class="glass-textBox">
           <p class="text head">Classic Hoodie</p>

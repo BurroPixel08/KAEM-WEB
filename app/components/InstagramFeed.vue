@@ -6,7 +6,15 @@
       <div class="insta-grid">
         <div v-for="(post, index) in instagramPosts" :key="index" class="insta-item">
           <a :href="post.link" target="_blank" rel="noopener noreferrer">
-            <img :src="post.image" :alt="'Instagram post ' + index">
+            <NuxtImg 
+              :src="post.image" 
+              :alt="'Instagram post ' + index"
+              quality="80"
+              width="400"
+              height="400"
+              format="webp"
+              loading="lazy"
+            />
             
             <div class="overlay">
               <div class="glass-icon">
@@ -31,19 +39,19 @@
 // Aquí solo cambias las fotos y los links de los últimos posts (Sigue igual)
 const instagramPosts = [
   { 
-    image: '/posts/post1.png', // Sube tus fotos 4:5 a la carpeta public
+    image: '/posts/post1.webp', // Sube tus fotos 4:5 a la carpeta public
     link: 'https://www.instagram.com/p/DVMt2FGEb6F/?img_index=1' 
   },
   { 
-    image: '/posts/post2.png', 
+    image: '/posts/post2.webp', 
     link: 'https://www.instagram.com/p/DVHknAsEWUw/?img_index=1' 
   },
   { 
-    image: '/posts/post3.png', 
+    image: '/posts/post3.webp', 
     link: 'https://www.instagram.com/p/DU_0N-oEcjA/?img_index=1' 
   },
   { 
-    image: '/posts/post4.png', 
+    image: '/posts/post4.webp', 
     link: 'https://www.instagram.com/p/DU9PqLekftI/?img_index=1' 
   }
 ]

@@ -7,21 +7,52 @@
         </div>
 
         <div class="clothing-container">
-            <ul class="clothings">
-                <picture>
-                    <img src="/franela.png" alt="franela">
-                </picture>
-                <picture>
-                    <img src="/pullover.png" alt="franela">
-                </picture>
-                <picture>
-                    <img src="/oversize.png" alt="franela">
-                </picture>
-                <picture>
-                    <img src="/hoodie.png" alt="franela">
-                </picture>
-            </ul>
-        </div>
+          <ul class="clothings">
+              <picture>
+                  <NuxtImg 
+                      src="/franela.webp" 
+                      alt="franela"
+                      quality="80" 
+                      width="400" 
+                      height="500" 
+                      format="webp"
+                      preload
+                      fetchpriority="high"
+                  />
+              </picture>
+              <picture>
+                  <NuxtImg 
+                      src="/pullover.webp" 
+                      alt="pullover"
+                      quality="80" 
+                      width="400" 
+                      height="500" 
+                      format="webp"
+                      preload
+                  />
+              </picture>
+              <picture>
+                  <NuxtImg 
+                      src="/oversize.webp" 
+                      alt="oversize"
+                      quality="80" 
+                      width="400" 
+                      height="500" 
+                      format="webp"
+                  />
+              </picture>
+              <picture>
+                  <NuxtImg 
+                      src="/hoodie.webp" 
+                      alt="hoodie"
+                      quality="80" 
+                      width="400" 
+                      height="500" 
+                      format="webp"
+                  />
+              </picture>
+          </ul>
+      </div>
     </section>
 </template>
 
